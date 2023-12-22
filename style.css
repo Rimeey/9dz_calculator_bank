@@ -1,0 +1,94 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: aliceblue;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.wrapper {
+    margin: 10px auto;
+    width: 90%;
+    width: 500px;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid gray;
+}
+
+.name {
+    width: inherit;
+    display: flex;
+    gap: 10px;
+    padding: 15px;
+    background-color:rgb(177, 224, 131);
+    font-size: 13px;
+    align-items: center;
+    justify-content: left;
+}
+
+.choice {
+    width: inherit;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: lightgray;
+}
+.choice select {
+    height: 30px;
+    width: 75px;
+    font-size: 19px;
+}
+.choice .date {
+    align-self: center;
+    font-size: 21px;
+}
+
+.calculator {
+    background-color: rgb(235, 232, 232);
+    width: inherit;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+}
+.calculator p {
+    margin-bottom: 5px;
+}
+.calculator input {
+    height: 50px;
+    width: 80%;
+    font-size: 30px;
+    outline: none;
+    font-weight: bold;
+    text-align: right;
+}
+.calculator select {
+    height: 50px;
+    width: 18.8%;
+    font-size: 25px;
+    color: gray;
+}
+.calculator input, .calculator select {
+    box-shadow: inset 0 0 4px 0.5px rgba(0, 0, 0, 0.5);
+}
+.calculator button {
+    width: 90px;
+    height: 75px;
+    border: 1px solid lightgrey;
+    outline: none;
+    cursor: pointer;
+}
+.calculator button:hover {
+    background-color: rgb(224, 224, 224);
+}
+.calculator .buttons {
+    display: flex;
+    justify-content: end;
+    gap: 15px;
+}

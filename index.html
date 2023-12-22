@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator Bank</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+    <div class="wrapper">
+
+        <div class="name">
+            <img src="./pic/logo.png" alt="" width="40px" height="30px">
+            <h2>Конвертер валют</h2>
+        </div>
+        <div class="choice">
+            <select>
+                <option>Нал.</option>
+                <option disabled>Безнал.</option>
+            </select>
+            <p class="date"></p>
+        </div>
+        <div class="calculator">
+
+            <div class="change">
+                <p>МЕНЯЮ</p>
+            <input type="text" class="change_input" required maxlength="15" oninput="this.value = this.value.replace(/[^0-9.]/g, '')">
+            <select id="valute">
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+                <option value="PLN">PLN</option>
+            </select>
+            </div>
+
+            <div class="buttons">
+                <button class="sides"><img src="./pic/sides.png" alt="" width="90px" height="75px"></button>
+            </div>
+
+            <div class="have">
+                <p>ПОЛУЧАЮ</p>
+            <input type="text" class="have_input" required readonly>
+            <select id="valute">
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+                <option value="PLN">PLN</option>
+            </select>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="./app.js"></script>
+    <script>
+        new Calculator('.wrapper .choice .date', '.change_input', '.have_input', '.buttons').init();
+    </script>
+</body>
+</html>
