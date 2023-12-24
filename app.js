@@ -26,9 +26,22 @@ class Calculator {
         return `${d}.${m}.${y}`
     }
 
+    returnsides() {
+        let up = this.change.nextElementSibling.value;
+        let down = this.have.nextElementSibling.value;
+        this.change.nextElementSibling.value = down;
+        this.have.nextElementSibling.value = up;
+        let ups = this.have.value;
+        this.change.value = ups;
+        this.calculate();
+    }
+
     link(valute) {
-        let str = `https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?valcode=${valute}&date=${this.dataday()}&json`
-        return str;
+        if (valute === 'UAH') {
+            return `uah.json`
+        } else {
+            return `https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?valcode=${valute}&date=${this.dataday()}&json`
+        }
     }
 
     valute1() {
@@ -39,35 +52,25 @@ class Calculator {
     }
 
     getinfo() {
-        const request1 = fetch(this.link(this.valute1()))
+        let request1 = fetch(this.link(this.valute1()))
             .then(response => { return response.json() })
             .then(resp => { return resp[0].rate })
 
-        const request2 = fetch(this.link(this.valute2()))
+        let request2 = fetch(this.link(this.valute2()))
             .then(response => { return response.json() })
             .then(resp => { return resp[0].rate })
 
         return Promise.all([request1, request2]).then(data => {
-            const rate1 = data[0]
-            const rate2 = data[1]
+            let rate1 = data[0]
+            let rate2 = data[1]
             return { rate1, rate2 };
         })
     }
 
     calculate() {
-        this.getinfo().then(data => {
-                return this.have.value = this.change.value * (data.rate1 / data.rate2);
+        this.getinfo().then(({rate1, rate2}) => {
+            return this.have.value = this.change.value * (rate1 / rate2);
         })
-    }
-
-    returnsides() {
-        let up = this.change.nextElementSibling.value;
-        let down = this.have.nextElementSibling.value;
-        let ups = this.have.value;
-        this.change.value = ups;
-        this.change.nextElementSibling.value = down;
-        this.have.nextElementSibling.value = up;
-        this.calculate();
     }
 
     init() {
